@@ -1,15 +1,6 @@
 <template lang="pug">
 .home
-	v-text-field.pa-3(
-		v-model='newTaskTitle',
-		@click:append='addTask',
-		@keyup.enter='addTask',
-		outlined,
-		label='Add Task',
-		append-icon='mdi-plus',
-		hide-details,
-		clearable
-	)
+	field-add-task
 	v-list.pt-0(v-if='$store.state.tasks.length', flat)
 		div(v-for='task in $store.state.tasks', :key='task.id')
 			v-list-item(
@@ -31,8 +22,11 @@
 </template>
 
 <script>
+import FieldAddTask from '@/components/todo/FieldAddTask.vue'
+
 export default {
 	name: 'Home',
+	components: { FieldAddTask },
 	data() {
 		return {
 			newTaskTitle: '',
