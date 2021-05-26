@@ -7,7 +7,7 @@ v-snackbar(v-model='$store.state.snackbar.show') {{ text }}
 <script>
 export default {
 	data: () => ({
-		text: `Hello, I'm a snackbar`,
+		text: `Task Added`,
 	}),
 }
 </script>
