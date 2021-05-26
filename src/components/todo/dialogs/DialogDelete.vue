@@ -5,7 +5,7 @@ v-dialog(:value='true', persistent, max-width='290')
 		v-card-text Are you sure you wanna delete this task?
 		v-card-actions 
 			v-spacer 
-			v-btn(@click='dialog = false', text) No
+			v-btn(@click='$emit("close")', text) No
 			v-btn(@click='$store.dispatch("deleteTask", task.id)', color='red', text) Yes
 </template>
 

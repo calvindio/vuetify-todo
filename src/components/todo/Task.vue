@@ -13,7 +13,11 @@ div
 				v-btn(@click.stop='dialogs.delete = true', icon) 
 					v-icon(color='primary lighten-1') mdi-delete
 	v-divider
-	dialog-delete(v-if='dialogs.delete', :task='task')
+	dialog-delete(
+		v-if='dialogs.delete',
+		:task='task',
+		@close='dialogs.delete = false'
+	)
 </template>
 
 <script>
