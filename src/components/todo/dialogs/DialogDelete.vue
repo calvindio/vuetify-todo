@@ -1,13 +1,10 @@
 <template lang="pug">
-v-dialog(v-model='dialog', persistent, max-width='290') 
-	<template lang="pug">(v-slot:activator="{ on, attrs }") 
-		v-btn(color='primary', dark, v-bind='attrs', v-on='on') Open Dialog
+v-dialog(:value='true', persistent, max-width='290') 
 	v-card 
-		v-card-title.headline Use Google's location service?
-		v-card-text Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+		v-card-title.headline Delete task?
+		v-card-text Are you sure you wanna delete this task?
 		v-card-actions 
 			v-spacer 
-			v-btn(color='green darken-1', text, @click='dialog = false') 
-				Disagree
-			v-btn(color='green darken-1', text, @click='dialog = false') Agree
+			v-btn(text, @click='dialog = false') No
+			v-btn(color='red', text, @click='dialog = false') Yes
 </template>
