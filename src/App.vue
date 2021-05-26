@@ -25,7 +25,7 @@ export default {
 		return {
 			drawer: null,
 			items: [
-				{ title: 'Todo', icon: 'mdi-view-dashboard', to: '/' },
+				{ title: 'Todo', icon: 'mdi-format-list-checks', to: '/' },
 				{ title: 'About', icon: 'mdi-help-box', to: '/about' },
 			],
 		}
