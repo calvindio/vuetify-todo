@@ -22,7 +22,7 @@
 					v-list-item-content 
 						v-list-item-title(:class='{ "text-decoration-line-through": task.done }') {{ task.title }}
 					v-list-item-action 
-						v-btn(@click.stop='deleteTask(task.id)', icon) 
+						v-btn(@click.stop='$store.commit("deleteTask", task.id)', icon) 
 							v-icon(color='primary lighten-1') mdi-delete
 			v-divider
 	.no-tasks(v-else)
@@ -42,9 +42,6 @@ export default {
 		addTask() {
 			this.$store.commit('addTask', this.newTaskTitle)
 			this.newTaskTitle = ''
-		},
-		deleteTask(id) {
-			this.tasks = this.tasks.filter((task) => task.id !== id)
 		},
 	},
 }
