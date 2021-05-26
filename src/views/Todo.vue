@@ -13,7 +13,7 @@
 	v-list.pt-0(v-if='$store.state.tasks.length', flat)
 		div(v-for='task in $store.state.tasks', :key='task.id')
 			v-list-item(
-				@click='doneTask(task.id)',
+				@click='$store.commit("doneTask", task.id)',
 				:class='{ "blue darken-4": task.done }'
 			)
 				template(v-slot:default) 
@@ -42,10 +42,6 @@ export default {
 		addTask() {
 			this.$store.commit('addTask', this.newTaskTitle)
 			this.newTaskTitle = ''
-		},
-		doneTask(id) {
-			let task = this.tasks.filter((task) => task.id === id)[0]
-			task.done = !task.done
 		},
 		deleteTask(id) {
 			this.tasks = this.tasks.filter((task) => task.id !== id)
