@@ -12,9 +12,29 @@ v-app#inspire
 					v-icon {{ item.icon }}
 				v-list-item-content
 					v-list-item-title {{ item.title }}
-	v-app-bar(app) 
+	v-app-bar(
+		app,
+		color='primary',
+		dark,
+		src='https://picsum.photos/1920/1080?random',
+		prominent
+	) 
+		template(v-slot:img='{ props }') 
+			v-img(
+				v-bind='props',
+				gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
+			) 
 		v-app-bar-nav-icon(@click='drawer = !drawer') 
-		v-toolbar-title Vuetify Todo
+		v-app-bar-title Title
+		v-spacer 
+		v-btn(icon) 
+			v-icon mdi-magnify
+		v-btn(icon) 
+			v-icon mdi-heart
+		v-btn(icon) 
+			v-icon mdi-dots-vertical
+		//- v-app-bar-nav-icon(@click='drawer = !drawer') 
+		//- v-toolbar-title Vuetify Todo
 	v-main 
 		router-view
 </template>
