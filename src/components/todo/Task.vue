@@ -10,8 +10,7 @@ div
 			v-list-item-content 
 				v-list-item-title(:class='{ "text-decoration-line-through": task.done }') {{ task.title }}
 			v-list-item-action 
-				v-btn(@click.stop='dialogs.delete = true', icon) 
-					v-icon(color='primary lighten-1') mdi-delete
+				task-menu
 	v-divider
 	dialog-delete(
 		v-if='dialogs.delete',
@@ -24,6 +23,7 @@ div
 export default {
 	components: {
 		DialogDelete: require('@/components/todo/dialogs/DialogDelete').default,
+		TaskMenu: require('@/components/todo/TaskMenu').default,
 	},
 	props: ['task'],
 	data() {
