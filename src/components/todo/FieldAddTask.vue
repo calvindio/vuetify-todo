@@ -12,7 +12,19 @@ v-text-field.pa-3(
 </template>
 
 <script>
-export default {}
+export default {
+	data() {
+		return {
+			newTaskTitle: '',
+		}
+	},
+	methods: {
+		addTask() {
+			this.$store.commit('addTask', this.newTaskTitle)
+			this.newTaskTitle = ''
+		},
+	},
+}
 </script>
 
 <style>

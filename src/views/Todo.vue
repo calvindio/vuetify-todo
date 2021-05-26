@@ -22,21 +22,10 @@
 </template>
 
 <script>
-import FieldAddTask from '@/components/todo/FieldAddTask.vue'
-
 export default {
 	name: 'Home',
-	components: { FieldAddTask },
-	data() {
-		return {
-			newTaskTitle: '',
-		}
-	},
-	methods: {
-		addTask() {
-			this.$store.commit('addTask', this.newTaskTitle)
-			this.newTaskTitle = ''
-		},
+	components: {
+		FieldAddTask: require('@/components/todo/FieldAddTask.vue').default,
 	},
 }
 </script>
