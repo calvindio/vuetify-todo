@@ -29,10 +29,14 @@ v-app#inspire
 			v-icon mdi-dots-vertical
 	v-main 
 		router-view
+		snackbar
 </template>
 
 <script>
 export default {
+	components: {
+		Snackbar: require('@/components/shared/Snackbar').default,
+	},
 	data() {
 		return {
 			drawer: null,
