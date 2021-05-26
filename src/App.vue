@@ -1,10 +1,10 @@
 <template lang="pug">
-v-card.mx-auto(height='400', width='256') 
-	v-navigation-drawer(permanent) 
+v-app#inspire 
+	v-navigation-drawer(v-model='drawer', app) 
 		v-list-item
 			v-list-item-content
-				v-list-item-title.title Application
-				v-list-item-subtitle subtext
+				v-list-item-title.title Vuetify Todo
+				v-list-item-subtitle Best Todo Ever
 		v-divider
 		v-list(dense, nav) 
 			v-list-item(v-for='item in items', :key='item.title', link) 
@@ -12,18 +12,21 @@ v-card.mx-auto(height='400', width='256')
 					v-icon {{ item.icon }}
 				v-list-item-content
 					v-list-item-title {{ item.title }}
+	v-app-bar(app) 
+		v-app-bar-nav-icon(@click='drawer = !drawer') 
+		v-toolbar-title Vuetify Todo
+	v-main 
 </template>
 
 <script>
 export default {
 	data() {
 		return {
+			drawer: null,
 			items: [
-				{ title: 'Dashboard', icon: 'mdi-view-dashboard' },
-				{ title: 'Photos', icon: 'mdi-image' },
+				{ title: 'Todo', icon: 'mdi-view-dashboard' },
 				{ title: 'About', icon: 'mdi-help-box' },
 			],
-			right: null,
 		}
 	},
 }
