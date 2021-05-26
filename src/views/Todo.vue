@@ -10,7 +10,7 @@
 		hide-details,
 		clearable
 	)
-	v-list.pt-0(flat)
+	v-list.pt-0(v-if='tasks.length', flat)
 		div(v-for='task in tasks', :key='task.id')
 			v-list-item(
 				@click='doneTask(task.id)',
@@ -25,6 +25,9 @@
 						v-btn(@click.stop='deleteTask(task.id)', icon) 
 							v-icon(color='primary lighten-1') mdi-delete
 			v-divider
+	.no-tasks(v-else)
+		v-icon(size='100', color='primary') mdi-check
+		.text-h5.primary--text No tasks
 </template>
 
 <script>
@@ -60,3 +63,12 @@ export default {
 	},
 }
 </script>
+
+<style lang="sass">
+.no-tasks
+	position: absolute
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)
+	opacity: .5
+</style>
