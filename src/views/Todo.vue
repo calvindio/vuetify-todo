@@ -2,12 +2,15 @@
 .home
 	v-list.pt-0(flat)
 		div(v-for='task in tasks', :key='task.id')
-			v-list-item
-				template(v-slot:default='{ active }') 
+			v-list-item(
+				@click='doneTask(task.id)',
+				:class='{ "blue darken-4": task.done }'
+			)
+				template(v-slot:default) 
 					v-list-item-action 
-						v-checkbox(:input-value='active') 
+						v-checkbox(:input-value='task.done') 
 					v-list-item-content 
-						v-list-item-title {{ task.title }}
+						v-list-item-title(:class='{ "text-decoration-line-through": task.done }') {{ task.title }}
 			v-divider
 </template>
 
@@ -17,11 +20,17 @@ export default {
 	data() {
 		return {
 			tasks: [
-				{ id: 1, title: 'Wake up' },
-				{ id: 2, title: 'Get bananas' },
-				{ id: 3, title: 'Eat bananas' },
+				{ id: 1, title: 'Wake up', done: false },
+				{ id: 2, title: 'Get bananas', done: false },
+				{ id: 3, title: 'Eat bananas', done: false },
 			],
 		}
+	},
+	methods: {
+		doneTask(id) {
+			let task = this.tasks.filter((task) => task.id === id)[0]
+			task.done = !task.done
+		},
 	},
 }
 </script>
