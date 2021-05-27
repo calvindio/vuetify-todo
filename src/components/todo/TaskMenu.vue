@@ -9,11 +9,16 @@ div
 				v-list-item-icon
 					v-icon(v-text='item.icon')
 				v-list-item-title {{ item.title }}
-	dialog-edit(v-if='dialogs.edit', :task='task', @close='dialogs.edit = false')
+	dialog-edit(v-if='dialogs.edit', @close='dialogs.edit = false', :task='task')
+	dialog-due-date(
+		v-if='dialogs.dueDate',
+		@close='dialogs.dueDate = false',
+		:task='task'
+	)
 	dialog-delete(
 		v-if='dialogs.delete',
-		:task='task',
-		@close='dialogs.delete = false'
+		@close='dialogs.delete = false',
+		:task='task'
 	)
 </template>
 
@@ -21,11 +26,12 @@ div
 export default {
 	components: {
 		DialogEdit: require('@/components/todo/dialogs/DialogEdit').default,
+		DialogDueDate: require('@/components/todo/dialogs/DialogDueDate').default,
 		DialogDelete: require('@/components/todo/dialogs/DialogDelete').default,
 	},
 	props: ['task'],
 	data: () => ({
-		dialogs: { edit: false, delete: false },
+		dialogs: { edit: false, dueDate: true, delete: false },
 		items: [
 			{
 				title: 'Edit',
