@@ -12,17 +12,23 @@ div
 			v-list-item-action(v-if='task.dueDate')
 				v-list-item-icon-text
 					v-icon(small) mdi-calendar
-					| {{ task.dueDate }}
+					| &nbsp {{ task.dueDate | niceDate }}
 			v-list-item-action 
 				task-menu(:task='task')
 	v-divider
 </template>
 
 <script>
+import { format } from 'date-fns'
 export default {
 	components: {
 		TaskMenu: require('@/components/todo/TaskMenu').default,
 	},
 	props: ['task'],
+	filters: {
+		niceDate(value) {
+			return format(new Date(value), 'MMM d')
+		},
+	},
 }
 </script>
