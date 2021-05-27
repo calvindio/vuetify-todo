@@ -9,6 +9,7 @@ div
 				v-list-item-icon
 					v-icon(v-text='item.icon')
 				v-list-item-title {{ item.title }}
+	dialog-edit(v-if='dialogs.edit', :task='task', @close='dialogs.edit = false')
 	dialog-delete(
 		v-if='dialogs.delete',
 		:task='task',
@@ -19,17 +20,18 @@ div
 <script>
 export default {
 	components: {
+		DialogEdit: require('@/components/todo/dialogs/DialogEdit').default,
 		DialogDelete: require('@/components/todo/dialogs/DialogDelete').default,
 	},
 	props: ['task'],
 	data: () => ({
-		dialogs: { delete: false },
+		dialogs: { edit: false, delete: false },
 		items: [
 			{
 				title: 'Edit',
 				icon: 'mdi-pencil',
 				click() {
-					console.log('edit')
+					this.dialogs.edit = true
 				},
 			},
 			{
