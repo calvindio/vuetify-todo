@@ -9,6 +9,10 @@ div
 				v-checkbox(:input-value='task.done') 
 			v-list-item-content 
 				v-list-item-title(:class='{ "text-decoration-line-through": task.done }') {{ task.title }}
+			v-list-item-action(v-if='task.dueDate')
+				v-list-item-icon-text
+					v-icon(small) mdi-calendar
+					| {{ task.dueDate }}
 			v-list-item-action 
 				task-menu(:task='task')
 	v-divider
