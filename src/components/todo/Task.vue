@@ -10,7 +10,7 @@ div
 			v-list-item-content 
 				v-list-item-title(:class='{ "text-decoration-line-through": task.done }') {{ task.title }}
 			v-list-item-action(v-if='task.dueDate')
-				v-list-item-icon-text
+				v-list-item-action-text
 					v-icon(small) mdi-calendar
 					| &nbsp {{ task.dueDate | niceDate }}
 			v-list-item-action 
