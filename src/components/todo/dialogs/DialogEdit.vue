@@ -8,7 +8,7 @@ v-dialog(:value='true', persistent, max-width='290')
 		v-card-actions 
 			v-spacer 
 			v-btn(@click='$emit("close")', text) Cancel
-			v-btn(@click='$store.dispatch("editTask", task.id)', color='red', text) Save
+			v-btn(@click='saveTask', color='red', text) Save
 </template>
 
 <script>
@@ -16,6 +16,15 @@ export default {
 	props: ['task'],
 	data() {
 		return { taskTitle: null }
+	},
+	methods: {
+		saveTask() {
+			const payload = {
+				id: this.task.id,
+				title: this.taskTitle,
+			}
+			this.$store.commit('updateTaskTitle', payload)
+		},
 	},
 	mounted() {
 		this.taskTitle = this.task.title
