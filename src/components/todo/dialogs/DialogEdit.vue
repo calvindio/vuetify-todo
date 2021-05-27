@@ -4,7 +4,7 @@ v-dialog(:value='true', persistent, max-width='290')
 		v-card-title.headline Edit task?
 		v-card-text 
 			p Edit the title of this task:
-			v-text-field(v-model='taskTitle')
+			v-text-field(v-model='taskTitle', @keyup.enter='saveTask')
 		v-card-actions 
 			v-spacer 
 			v-btn(@click='$emit("close")', text) Cancel
@@ -24,6 +24,7 @@ export default {
 				title: this.taskTitle,
 			}
 			this.$store.commit('updateTaskTitle', payload)
+			this.$emit('close')
 		},
 	},
 	mounted() {
