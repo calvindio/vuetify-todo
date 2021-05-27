@@ -8,7 +8,7 @@ v-dialog(:value='true', persistent, max-width='290')
 		v-card-actions 
 			v-spacer 
 			v-btn(@click='$emit("close")', text) Cancel
-			v-btn(@click='saveTask', color='red', text) Save
+			v-btn(@click='saveTask', :disabled='taskTitleInvalid', color='red', text) Save
 </template>
 
 <script>
@@ -17,8 +17,14 @@ export default {
 	data() {
 		return { taskTitle: null }
 	},
+	computed: {
+		taskTitleInvalid() {
+			return !this.taskTitle || this.taskTitle === this.task.title
+		},
+	},
 	methods: {
 		saveTask() {
+			if (this.taskTitleInvalid) return
 			const payload = {
 				id: this.task.id,
 				title: this.taskTitle,
