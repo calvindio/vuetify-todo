@@ -22,7 +22,7 @@ v-app#inspire
 		dark,
 		src='mountains.jpg',
 		prominent,
-		height='220'
+		:height='$route.path === "/" ? 220 : 170'
 	) 
 		template(v-slot:img='{ props }') 
 			v-img(
@@ -38,7 +38,7 @@ v-app#inspire
 				v-toolbar-title.text-h4.ml-4 {{ $store.state.appTitle }}
 			v-row
 				live-date-time
-			v-row
+			v-row(v-if='$route.path === "/"')
 				field-add-task
 	v-main 
 		router-view
