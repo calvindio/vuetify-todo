@@ -35,7 +35,7 @@ v-app#inspire
 				v-spacer 
 				search
 			v-row
-				v-toolbar-title.text-h4.ml-4 {{ appTitle }}
+				v-toolbar-title.text-h4.ml-4 {{ $store.state.appTitle }}
 			v-row
 				live-date-time
 	v-main 
@@ -58,11 +58,6 @@ export default {
 				{ title: 'About', icon: 'mdi-help-box', to: '/about' },
 			],
 		}
-	},
-	computed: {
-		appTitle() {
-			return process.env.VUE_APP_TITLE
-		},
 	},
 }
 </script>
