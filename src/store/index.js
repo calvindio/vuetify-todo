@@ -88,7 +88,11 @@ export default new Vuex.Store({
 			commit('deleteTask', id)
 			commit('showSnackbar', 'Task deleted!')
 		},
-		updateTaskTitle({ commit }, payload) {
+		async updateTaskTitle({ commit }, payload) {
+			await db
+				.collection('tasks')
+				.doc({ id: payload.id })
+				.update({ title: payload.title })
 			commit('updateTaskTitle', payload)
 			commit('showSnackbar', 'Task updated!')
 		},
