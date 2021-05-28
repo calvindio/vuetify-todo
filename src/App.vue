@@ -21,12 +21,9 @@ v-app#inspire
 		v-app-bar-nav-icon(@click='drawer = !drawer') 
 		v-app-bar-title Vuetify Todo
 		v-spacer 
+		search
 		v-btn(icon) 
 			v-icon mdi-magnify
-		v-btn(icon) 
-			v-icon mdi-heart
-		v-btn(icon) 
-			v-icon mdi-dots-vertical
 	v-main 
 		router-view
 		snackbar
@@ -35,6 +32,7 @@ v-app#inspire
 <script>
 export default {
 	components: {
+		Search: require('@/components/tools/Search').default,
 		Snackbar: require('@/components/shared/Snackbar').default,
 	},
 	data() {
