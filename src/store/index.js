@@ -11,9 +11,9 @@ export default new Vuex.Store({
 		appTitle: process.env.VUE_APP_TITLE,
 		search: null,
 		tasks: [
-			{ id: 1, title: 'Wake up', done: false, dueDate: '2021-10-16' },
-			{ id: 2, title: 'Get bananas', done: false, dueDate: '2021-10-17' },
-			{ id: 3, title: 'Eat bananas', done: false, dueDate: null },
+			// { id: 1, title: 'Wake up', done: false, dueDate: '2021-10-16' },
+			// { id: 2, title: 'Get bananas', done: false, dueDate: '2021-10-17' },
+			// { id: 3, title: 'Eat bananas', done: false, dueDate: null },
 		],
 		snackbar: {
 			show: false,
@@ -25,13 +25,7 @@ export default new Vuex.Store({
 		setSearch(state, value) {
 			state.search = value
 		},
-		addTask(state, newTaskTitle) {
-			let newTask = {
-				id: Date.now(),
-				title: newTaskTitle,
-				done: false,
-				dueDate: null,
-			}
+		addTask(state, newTask) {
 			state.tasks.push(newTask)
 		},
 		doneTask(state, id) {
@@ -71,8 +65,15 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		addTask({ commit }, newTaskTitle) {
-			commit('addTask', newTaskTitle)
+		async addTask({ commit }, newTaskTitle) {
+			let newTask = {
+				id: Date.now(),
+				title: newTaskTitle,
+				done: false,
+				dueDate: null,
+			}
+			await db.collection('tasks').add(newTask)
+			commit('addTask', newTask)
 			commit('showSnackbar', 'Task added!')
 		},
 		deleteTask({ commit }, id) {
