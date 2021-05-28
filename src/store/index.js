@@ -3,9 +3,9 @@ import Vuex from 'vuex'
 import Localbase from 'localbase'
 
 let db = new Localbase('db')
+db.config.debug = false
 
 Vue.use(Vuex)
-
 export default new Vuex.Store({
 	state: {
 		appTitle: process.env.VUE_APP_TITLE,
@@ -109,6 +109,10 @@ export default new Vuex.Store({
 				})
 			commit('updateTaskDueDate', payload)
 			commit('showSnackbar', 'Due Date updated!')
+		},
+		async setTasks({ commit }, tasks) {
+			commit('setTasks', tasks)
+			db.collection('tasks').set(tasks)
 		},
 		async getTasks({ commit }) {
 			const tasks = await db.collection('tasks').get()

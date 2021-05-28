@@ -16,8 +16,8 @@ export default {
 			get() {
 				return this.$store.getters.tasksFiltered
 			},
-			set(value) {
-				this.$store.commit('setTasks', value)
+			set(tasks) {
+				this.$store.dispatch('setTasks', tasks)
 			},
 		},
 	},
