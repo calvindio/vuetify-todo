@@ -1,14 +1,14 @@
 <template lang="pug">
-v-text-field.pa-3(
+v-text-field.field-add-task.pa-3(
 	v-model='newTaskTitle',
 	@keyup.enter='addTask',
 	outlined,
-	label='Add Task',
+	placeholder='Add Task',
 	hide-details,
 	clearable
 )
 	template(v-slot:append) 
-		v-icon(@click='addTask', color='primary', :disabled='newTaskTitleInvalid') mdi-plus
+		v-icon(@click='addTask', :disabled='newTaskTitleInvalid') mdi-plus
 </template>
 
 <script>
@@ -32,3 +32,9 @@ export default {
 	},
 }
 </script>
+
+<style lang="sass">
+.field-add-task.v-input--is-focused
+	.v-input__slot
+		background: rgba(31, 94, 129, .5) !important
+</style>

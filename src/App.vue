@@ -22,12 +22,12 @@ v-app#inspire
 		dark,
 		src='mountains.jpg',
 		prominent,
-		height='170'
+		height='220'
 	) 
 		template(v-slot:img='{ props }') 
 			v-img(
 				v-bind='props',
-				gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
+				gradient='to top right, rgba(19,84,122,.9), rgba(128,208,199,.9)'
 			) 
 		v-container.header-container.pa-0
 			v-row
@@ -38,6 +38,8 @@ v-app#inspire
 				v-toolbar-title.text-h4.ml-4 {{ $store.state.appTitle }}
 			v-row
 				live-date-time
+			v-row
+				field-add-task
 	v-main 
 		router-view
 		snackbar
@@ -49,6 +51,7 @@ export default {
 		Search: require('@/components/tools/Search').default,
 		LiveDateTime: require('@/components/tools/LiveDateTime').default,
 		Snackbar: require('@/components/shared/Snackbar').default,
+		FieldAddTask: require('@/components/todo/FieldAddTask').default,
 	},
 	data() {
 		return {
