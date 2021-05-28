@@ -88,6 +88,10 @@ export default new Vuex.Store({
 			commit('updateTaskDueDate', payload)
 			commit('showSnackbar', 'Due Date updated!')
 		},
+		async getTasks({ commit }) {
+			const tasks = await db.collection('tasks').get()
+			commit('setTasks', tasks)
+		},
 	},
 	getters: {
 		tasksFiltered(state) {
