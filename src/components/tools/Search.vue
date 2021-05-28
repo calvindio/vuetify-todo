@@ -1,5 +1,8 @@
 <template lang="pug">
-v-text-field.expanding-search.mt-1.closed(
+v-text-field.expanding-search.mt-1(
+	@focus='searchClosed = false',
+	@blur='searchClosed = true',
+	:class='{ closed: searchClosed }',
 	placeholder='Search',
 	prepend-inner-icon='mdi-magnify',
 	filled,
@@ -7,6 +10,14 @@ v-text-field.expanding-search.mt-1.closed(
 	clearable
 )
 </template>
+
+<script>
+export default {
+	data() {
+		return { searchClosed: true }
+	},
+}
+</script>
 
 <style lang="sass">
 .expanding-search
