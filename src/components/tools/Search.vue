@@ -1,8 +1,9 @@
 <template lang="pug">
 v-text-field.expanding-search.mt-1(
+	v-model='search',
 	@focus='searchClosed = false',
 	@blur='searchClosed = true',
-	:class='{ closed: searchClosed }',
+	:class='{ closed: searchClosed && !search }',
 	placeholder='Search',
 	prepend-inner-icon='mdi-magnify',
 	filled,
@@ -14,7 +15,7 @@ v-text-field.expanding-search.mt-1(
 <script>
 export default {
 	data() {
-		return { searchClosed: true }
+		return { search: null, searchClosed: true }
 	},
 }
 </script>
@@ -23,6 +24,7 @@ export default {
 .expanding-search
 	transition: max-width .3s
 	.v-input__slot
+		cursor: pointer !important
 		&:before, &:after
 			border-color: transparent !important
 	&.closed
