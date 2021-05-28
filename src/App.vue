@@ -1,11 +1,13 @@
 <template lang="pug">
 v-app#inspire 
 	v-navigation-drawer(v-model='drawer', app) 
-		v-img(
+		v-img.pa-4(
 			src='mountains.jpg',
 			height='170',
 			gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
 		)
+			v-avatar(size='70')
+				img(src='calvin.jpg', alt='profile picture')
 		v-list(dense, nav) 
 			v-list-item(v-for='item in items', :key='item.title', :to='item.to', link) 
 				v-list-item-icon
