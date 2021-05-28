@@ -16,7 +16,7 @@ div
 			v-list-item-action 
 				task-menu(:task='task')
 			v-list-item-action(v-if='$store.state.sorting')
-				v-btn(color='primary', icon) 
+				v-btn.handle(color='primary', icon)
 					v-icon mdi-drag-horizontal-variant
 	v-divider
 </template>
