@@ -1,6 +1,6 @@
 <template lang="pug">
 v-app#inspire 
-	v-navigation-drawer(v-model='drawer', app) 
+	v-navigation-drawer(v-model='drawer', :mobile-breakpoint='768', app) 
 		v-img.pa-4(
 			src='mountains.jpg',
 			height='170',
@@ -29,7 +29,7 @@ v-app#inspire
 				v-bind='props',
 				gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
 			) 
-		v-container.pa-0
+		v-container.header-container.pa-0
 			v-row
 				v-app-bar-nav-icon(@click='drawer = !drawer') 
 				v-spacer 
@@ -52,7 +52,7 @@ export default {
 	},
 	data() {
 		return {
-			drawer: true,
+			drawer: null,
 			items: [
 				{ title: 'Todo', icon: 'mdi-format-list-checks', to: '/' },
 				{ title: 'About', icon: 'mdi-help-box', to: '/about' },
@@ -61,3 +61,8 @@ export default {
 	},
 }
 </script>
+
+<style lang="sass">
+.header-container
+	max-width: none !important
+</style>
