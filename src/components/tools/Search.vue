@@ -4,6 +4,7 @@ v-text-field.expanding-search.mt-1(
 	@input='$store.commit("setSearch", $event)',
 	@focus='searchClosed = false',
 	@blur='searchClosed = true',
+	:disabled='$store.state.sorting',
 	:class='{ closed: searchClosed && !$store.state.search }',
 	placeholder='Search',
 	prepend-inner-icon='mdi-magnify',
