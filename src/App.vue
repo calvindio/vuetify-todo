@@ -6,8 +6,10 @@ v-app#inspire
 			height='170',
 			gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
 		)
-			v-avatar(size='70')
+			v-avatar.mb-2.pt-7(size='70')
 				img(src='calvin.jpg', alt='profile picture')
+			.white--text.text-subtitle-1.font-weight-bold Danny Connell
+			.white--text.text-subtitle-2 danny__connell
 		v-list(dense, nav) 
 			v-list-item(v-for='item in items', :key='item.title', :to='item.to', link) 
 				v-list-item-icon
