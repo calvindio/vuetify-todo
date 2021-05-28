@@ -1,7 +1,7 @@
 <template lang="pug">
 div
 	v-list-item(
-		@click='$store.commit("doneTask", task.id)',
+		@click='$store.dispatch("doneTask", task.id)',
 		:class='{ "blue darken-4": task.done }',
 		:ripple='false'
 	)
