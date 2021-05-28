@@ -12,7 +12,14 @@ v-app#inspire
 					v-icon {{ item.icon }}
 				v-list-item-content
 					v-list-item-title {{ item.title }}
-	v-app-bar(app, color='primary', dark, src='mountains.jpg', prominent) 
+	v-app-bar(
+		app,
+		color='primary',
+		dark,
+		src='mountains.jpg',
+		prominent,
+		height='170'
+	) 
 		template(v-slot:img='{ props }') 
 			v-img(
 				v-bind='props',
@@ -24,7 +31,9 @@ v-app#inspire
 				v-spacer 
 				search
 			v-row
-				v-toolbar-title.ml-4 Vuetify Todo
+				v-toolbar-title.text-h4.ml-4 Vuetify Todo
+			v-row
+				live-date-time
 	v-main 
 		router-view
 		snackbar
@@ -34,6 +43,7 @@ v-app#inspire
 export default {
 	components: {
 		Search: require('@/components/tools/Search').default,
+		LiveDateTime: require('@/components/tools/LiveDateTime').default,
 		Snackbar: require('@/components/shared/Snackbar').default,
 	},
 	data() {
