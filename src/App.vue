@@ -18,10 +18,13 @@ v-app#inspire
 				v-bind='props',
 				gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
 			) 
-		v-app-bar-nav-icon(@click='drawer = !drawer') 
-		v-app-bar-title Vuetify Todo
-		v-spacer 
-		search
+		v-container.pa-0
+			v-row
+				v-app-bar-nav-icon(@click='drawer = !drawer') 
+				v-spacer 
+				search
+			v-row
+				v-toolbar-title.ml-4 Vuetify Todo
 	v-main 
 		router-view
 		snackbar
