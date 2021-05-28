@@ -1,11 +1,7 @@
 <template lang="pug">
 v-list.pt-0(flat)
-	draggable(:list='$store.getters.tasksFiltered', handle='.handle')
-		task(
-			v-for='task in $store.getters.tasksFiltered',
-			:key='task.id',
-			:task='task'
-		)
+	draggable(v-model='tasks', handle='.handle')
+		task(v-for='task in tasks', :key='task.id', :task='task')
 </template>
 
 <script>
@@ -14,6 +10,16 @@ export default {
 	components: {
 		draggable,
 		Task: require('@/components/todo/Task').default,
+	},
+	computed: {
+		tasks: {
+			get() {
+				return this.$store.getters.tasksFiltered
+			},
+			set(value) {
+				this.$store.commit('setTasks', value)
+			},
+		},
 	},
 }
 </script>

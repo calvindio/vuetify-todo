@@ -16,7 +16,7 @@ export default new Vuex.Store({
 			show: false,
 			text: 'Hey mother flipper!',
 		},
-		sorting: false,
+		sorting: true,
 	},
 	mutations: {
 		setSearch(state, value) {
@@ -45,6 +45,9 @@ export default new Vuex.Store({
 		updateTaskDueDate(state, { id, dueDate }) {
 			let task = state.tasks.filter(task => task.id === id)[0]
 			task.dueDate = dueDate
+		},
+		setTasks(state, tasks) {
+			state.tasks = tasks
 		},
 		showSnackbar(state, text) {
 			let timeout = 0
