@@ -19,7 +19,7 @@ export default new Vuex.Store({
 			show: false,
 			text: 'Hey mother flipper!',
 		},
-		sorting: true,
+		sorting: false,
 	},
 	mutations: {
 		setSearch(state, value) {
