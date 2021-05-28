@@ -1,11 +1,11 @@
 <template lang="pug">
 v-app#inspire 
 	v-navigation-drawer(v-model='drawer', app) 
-		v-list-item
-			v-list-item-content
-				v-list-item-title.title Vuetify Todo
-				v-list-item-subtitle Best Todo Ever
-		v-divider
+		v-img(
+			src='mountains.jpg',
+			height='170',
+			gradient='to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)'
+		)
 		v-list(dense, nav) 
 			v-list-item(v-for='item in items', :key='item.title', :to='item.to', link) 
 				v-list-item-icon
@@ -48,7 +48,7 @@ export default {
 	},
 	data() {
 		return {
-			drawer: null,
+			drawer: true,
 			items: [
 				{ title: 'Todo', icon: 'mdi-format-list-checks', to: '/' },
 				{ title: 'About', icon: 'mdi-help-box', to: '/about' },
