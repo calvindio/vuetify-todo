@@ -1,9 +1,10 @@
 <template lang="pug">
 v-text-field.expanding-search.mt-1(
-	v-model='search',
+	:value='$store.state.search',
+	@input='$store.commit("setSearch", $event)',
 	@focus='searchClosed = false',
 	@blur='searchClosed = true',
-	:class='{ closed: searchClosed && !search }',
+	:class='{ closed: searchClosed && !$store.state.search }',
 	placeholder='Search',
 	prepend-inner-icon='mdi-magnify',
 	filled,
@@ -15,7 +16,7 @@ v-text-field.expanding-search.mt-1(
 <script>
 export default {
 	data() {
-		return { search: null, searchClosed: true }
+		return { searchClosed: true }
 	},
 }
 </script>
