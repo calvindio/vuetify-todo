@@ -22,8 +22,6 @@ v-app#inspire
 		v-app-bar-title Vuetify Todo
 		v-spacer 
 		search
-		v-btn(icon) 
-			v-icon mdi-magnify
 	v-main 
 		router-view
 		snackbar
